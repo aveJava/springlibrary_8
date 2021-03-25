@@ -2,17 +2,16 @@ package ru.javabegin.training.library.springlibrary.domain;
 
 import org.springframework.data.annotation.Id;
 
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     private Long Id;
 
+    @Column(nullable = false)
     private String name;
 
     @OneToMany(mappedBy = "genre", fetch = FetchType.LAZY)
