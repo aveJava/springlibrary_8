@@ -1,0 +1,43 @@
+# отключение безопасности (логинов и паролей) на время разработки
+# эти параметры стали deprecated, используем вместо них класс SecurityConfig
+management:
+    security:
+        enabled: false
+security:
+    basic:
+        enabled: false
+
+spring:
+  # настройки datasource. datasource - это то, через что приложение будет соединятьс с БД
+  datasource:
+    default-catalog: library  # schema в БД, к которой надо подключиться
+    jndi-name: jdbc/Library   # JNDI-имя datasource (можно будет сослаться на него в Glassfish)
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    properties:
+      hibernate:
+        # контекст приложения будет привязан к Spring-контексту
+        # сессия приложения уничтожается вместе со Spring-контейнером (а не с основным потоком как обычно)
+        current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+        # диалект БД
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        # форматированный (читаемый) вывод SQL-запросов
+        format_sql: true
+    show-sql: true
+
+
+logging:
+  file: C:\Users\mmukhin\Desktop\log.txt  # файл, в который будет писаться лог
+  pattern:          # шаблон лога: время сообщения, само сообщение (%m%n), из какого пакета
+    file: "%d{HH:mm:ss} %-5p [%c] - %m%n"
+
+  # уровни логирования:
+  level:
+    ROOT: error # для всех пакетов приложения. все менее значимые сообщения, чем error показываться не будут
+    # за исключением следующих пакетов (для них не ниже warn)
+    org.springframework: warn
+    javax.faces: warn
+    org.omnifaces: warn
+    org.springframework.security: warn
+    org.hibernate: warn
+    org.hibernate.type.descriptor.sql: warn
