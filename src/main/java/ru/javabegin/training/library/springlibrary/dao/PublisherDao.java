@@ -5,12 +5,6 @@ import ru.javabegin.training.library.springlibrary.domain.Publisher;
 
 import java.util.List;
 
-public interface PublisherDao {
-    List<Publisher> getAll();
-    Publisher get(long id);
-    Publisher save(Publisher publisher);
-    void delete(Publisher publisher);
+public interface PublisherDao extends GeneralDAO<Publisher> {
 
-
-    List<Publisher> search(String ... searchString);
 }

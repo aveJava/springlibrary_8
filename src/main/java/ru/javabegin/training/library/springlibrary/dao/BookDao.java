@@ -4,13 +4,6 @@ import ru.javabegin.training.library.springlibrary.domain.Book;
 
 import java.util.List;
 
-public interface BookDao {
-    List<Book> getAll();
-    Book get();
-    Book save(Book book);
-    void delete(Book book);
-
-    List<Book> search(String ... searchString);
-
+public interface BookDao extends GeneralDAO<Book> {
     List<Book> findTopBooks(int limit);
 }

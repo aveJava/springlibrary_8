@@ -7,11 +7,6 @@ import ru.javabegin.training.library.springlibrary.domain.Vote;
 
 import java.util.List;
 
-public interface AuthorDao {
-    List<Author> getAll();          // получить всех авторов
-    Author get(long id);            // плолучить автора по id
-    Author save (Author obj);        // сохранить автора (и для добавления и для редактирования)
-    void delete(Author object);     // удалить автора
+public interface AuthorDao extends GeneralDAO<Author> {
 
-    List<Author> search(String ... searchString);
 }
