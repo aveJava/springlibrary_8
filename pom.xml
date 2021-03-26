@@ -17,8 +17,15 @@
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
-		<java.version>16</java.version>
+		<java.version>8</java.version>
 	</properties>
+
+	<repositories>
+		<repository>
+			<id>projectlombok.org</id>
+			<url>https://projectlombok.org/edge-releases</url>
+		</repository>
+	</repositories>
 
 	<dependencies>
 		<dependency>
@@ -79,10 +86,17 @@
 			<version>2.4.4</version>
 		</dependency>
 
-		<dependency>		<!-- lombok -->
+<!--		<dependency>		&lt;!&ndash; lombok &ndash;&gt;-->
+<!--			<groupId>org.projectlombok</groupId>-->
+<!--			<artifactId>lombok</artifactId>-->
+<!--			<version>1.18.16</version>-->
+<!--			<scope>provided</scope>-->
+<!--		</dependency>-->
+
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.16</version>
+			<version>edge-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -111,8 +125,8 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>15</source>
-					<target>15</target>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 				</configuration>
 			</plugin>
 		</plugins>
